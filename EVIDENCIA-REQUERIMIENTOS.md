@@ -1,8 +1,8 @@
-# 📋 Evidencia de Requerimientos Implementados
+# 📋 Evidencia - Requerimientos del Curso
 
-## ✅ Punto 1: Estructura de Carpetas
+## Punto 1: Estructura de Carpetas
 
-**Requerimiento:** Mantener dos carpetas separadas: /backend y /frontend con sus propios archivos de configuración.
+**Lo que pedían:** Dos carpetas separadas backend y frontend con sus configs.
 
 ### Evidencia:
 ```
@@ -22,16 +22,13 @@ Vintage-Record-main/
     └── src/app/          ✅ Aplicación Angular
 ```
 
-**Verificar:**
-- Navegar a `/backend` y `/frontend`
-- Abrir `package.json` en cada carpeta
-- Cada uno tiene dependencias independientes
+**Cómo verificar:** Mira las carpetas `/backend` y `/frontend`, cada una tiene su `package.json`
 
 ---
 
-## ✅ Punto 2: Enrutamiento en Angular
+## Punto 2: Routing en Angular
 
-**Requerimiento:** Implementar navegación entre al menos 3 vistas usando RouterModule.
+**Lo que pedían:** Mínimo 3 vistas con RouterModule.
 
 ### Evidencia:
 
@@ -334,8 +331,19 @@ open http://localhost:4200
 
 ---
 
-## ✅ Estado Final
+## ✅ Resumen
 
-**Todos los requerimientos están implementados y funcionando correctamente.**
+Todos los 6 puntos del curso están implementados:
 
-El proyecto está listo para demostración completa. 🎉
+| # | Requerimiento | Hecho |
+|---|---------------|-------|
+| 1 | Carpetas separadas | ✅ |
+| 2 | Routing (3+ vistas) | ✅ 5 rutas |
+| 3 | Componentes + Servicio HTTP | ✅ |
+| 4 | Formularios reactivos | ✅ 3 formularios |
+| 5 | Auth + localStorage | ✅ JWT completo |
+| 6 | Backend CRUD | ✅ MongoDB + 9 endpoints |
+
+**Stack:** Angular 17, Node.js, Express, MongoDB, JWT, Bootstrap 5
+
+Todo funciona. Ver `QUICK-START.md` para correrlo.

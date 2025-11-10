@@ -1,68 +1,82 @@
-# 🎵 Vintage Record - Full Stack Application
+# 🎵 Vintage Record - Proyecto Full Stack
 
-![Angular](https://img.shields.io/badge/Angular-17-red?style=for-the-badge&logo=angular)
-![Node.js](https://img.shields.io/badge/Node.js-Express-green?style=for-the-badge&logo=node.js)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.3-purple?style=for-the-badge&logo=bootstrap)
-![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=typescript)
+![Angular](https://img.shields.io/badge/Angular-17-red?style=flat-square&logo=angular)
+![Node.js](https://img.shields.io/badge/Node.js-Express-green?style=flat-square&logo=node.js)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-green?style=flat-square&logo=mongodb)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-purple?style=flat-square&logo=bootstrap)
 
 ## 📖 Descripción
 
-**Vintage Record** es una aplicación full-stack para una tienda especializada en vinilos, discos retro y equipos clásicos ubicada en Chapinero, Bogotá, Colombia.
+Proyecto de una tienda de vinilos retro con frontend Angular y backend Node.js + MongoDB. 
+
+Incluye todo lo pedido en el curso: routing, componentes, servicios, formularios reactivos, autenticación con JWT y CRUD completo.
 
 ## 📁 Estructura del Proyecto
 
 ```
 Vintage-Record-main/
 │
-├── backend/            # Express.js API REST
-│   ├── server.js      # Servidor principal
-│   ├── package.json   # Dependencias backend
-│   └── .env           # Variables de entorno
+├── backend/                # Express + MongoDB API
+│   ├── config/
+│   │   └── database.js    # Configuración MongoDB
+│   ├── models/
+│   │   ├── User.js        # Modelo Usuario (auth)
+│   │   ├── Vinyl.js       # Modelo Vinilo (CRUD)
+│   │   └── Contact.js     # Modelo Contacto
+│   ├── server.js          # Servidor Express
+│   ├── package.json       # Dependencias backend
+│   └── .env               # Variables de entorno
 │
-└── frontend/          # Angular 17 App
-    ├── src/
-    │   ├── app/
-    │   │   ├── navbar/    # NavbarComponent
-    │   │   ├── registro/  # RegistroComponent
-    │   │   ├── perfil/    # PerfilComponent
-    │   │   ├── services/  # VinylService (HttpClient)
-    │   │   └── ...
+└── frontend/              # Angular 17 SPA
+    ├── src/app/
+    │   ├── components/
+    │   │   ├── navbar/        # NavbarComponent
+    │   │   ├── registro/      # RegistroComponent
+    │   │   ├── perfil/        # PerfilComponent
+    │   │   ├── login/         # LoginComponent
+    │   │   └── dashboard/     # DashboardComponent (CRUD)
+    │   ├── services/
+    │   │   ├── auth.service.ts   # Autenticación + localStorage
+    │   │   └── vinyl.service.ts  # HTTP CRUD operations
+    │   ├── guards/
+    │   │   └── auth.guard.ts     # Protección de rutas
     │   └── environments/
     └── package.json
 ```
 
-## ✨ Características Implementadas
+## ✨ Lo que tiene el proyecto
 
-### Angular Frontend
-- ✅ **Angular Router**: Navegación entre 5 vistas (Inicio, Registro, Login, Perfil, Dashboard)
-- ✅ **3 Componentes Personalizados**: NavbarComponent, RegistroComponent, PerfilComponent
-- ✅ **HttpClient Service**: VinylService para comunicación con backend
-- ✅ **Formularios Reactivos**: Two-way binding con FormsModule
-- ✅ **Estados de Carga**: Spinners y manejo de errores
-- ✅ **Diseño Responsivo**: Bootstrap 5.3.3
+### Frontend (Angular)
+- Router con 5 páginas
+- Componentes: Navbar, Login, Registro, Perfil, Dashboard
+- Servicios con HttpClient (AuthService y VinylService)
+- Formularios reactivos con validaciones
+- AuthGuard para proteger rutas
+- Bootstrap para el diseño
 
-### Express Backend
-- ✅ **API REST**: Endpoints para vinilos y contacto
-- ✅ **CORS configurado**: Permite peticiones desde Angular
-- ✅ **Variables de entorno**: Configuración con .env
+### Backend (Node + Express + MongoDB)
+- 9 endpoints REST (auth, CRUD de vinilos, contacto)
+- MongoDB con Mongoose (3 modelos)
+- Autenticación con JWT y bcrypt
+- CRUD completo que funciona
+- Seed automático con datos de prueba
 
-### Integración
-- ✅ **Frontend consume Backend**: HttpClient conecta a Express
-- ✅ **Manejo de errores**: Feedback visual al usuario
+### Funcionalidades
+- Login/Registro con JWT
+- Crear, editar y eliminar vinilos
+- Formularios con validaciones
+- LocalStorage para la sesión
+- Todo conectado frontend-backend
 
-## 🚀 Tecnologías
+## 🛠️ Tecnologías usadas
 
-### Frontend Angular
-- **Angular 17**: Framework SPA
-- **TypeScript**: Tipado estático
-- **RxJS**: Observables para HTTP
-- **Bootstrap 5.3.3**: Estilos
-- **FormsModule**: Formularios
+**Frontend:** Angular 17, TypeScript, Bootstrap 5, RxJS
 
-### Backend
-- **Node.js + Express**: API REST
-- **CORS**: Cross-origin
-- **dotenv**: Variables de entorno
+**Backend:** Node.js, Express, MongoDB, Mongoose
+
+**Autenticación:** JWT + bcrypt
+
+**Otros:** CORS, dotenv
 
 ## 📁 Estructura del Proyecto
 
@@ -103,30 +117,30 @@ Vintage-Record-main/
 - Perfiles del equipo
 - Call-to-action
 
-## 🛠️ Instalación y Uso
+## 🚀 Cómo correr el proyecto
 
-### Requisitos Previos
-- **Node.js 18+** y npm
-- **Angular CLI** (opcional): `npm install -g @angular/cli`
+**Necesitas:**
+- Node.js y npm
+- MongoDB instalado y corriendo
 
-### Instalación Rápida
+**Pasos:**
 
 ```bash
-# Clonar repositorio
-cd Vintage-Record-main
-
-# Backend
+# 1. Backend
 cd backend
 npm install
+cp .env.example .env
 npm run dev
-# ✅ Backend en http://localhost:3000
+# Corre en http://localhost:3000
 
-# Frontend Angular (nueva terminal)
-cd ../frontend
+# 2. Frontend (otra terminal)
+cd frontend
 npm install
 npm start
-# ✅ Angular en http://localhost:4200
+# Corre en http://localhost:4200
 ```
+
+Listo! Abre http://localhost:4200 en el navegador.
 
 ## 💡 Funcionalidades JavaScript
 
@@ -228,18 +242,26 @@ console.log(getFormSubmissions());
 ]
 ```
 
-## 🚧 Próximas Mejoras
+## ✅ Qué funciona
 
-- [ ] Backend para procesamiento real de formularios
-- [ ] Base de datos de productos
-- [ ] Carrito de compras
-- [ ] Sistema de búsqueda
-- [ ] Integración con pasarelas de pago
-- [ ] Panel de administración
-- [ ] API REST
-- [ ] Sistema de autenticación de usuarios
-- [ ] Blog de noticias musicales
-- [ ] Integración con redes sociales
+**Backend:**
+- API REST con 9 endpoints
+- MongoDB con 3 modelos (User, Vinyl, Contact)
+- Login/Registro con JWT + bcrypt
+- CRUD completo de vinilos
+
+**Frontend:**
+- Angular con 5 páginas
+- Login, registro, protección de rutas (AuthGuard)
+- Dashboard para crear/editar/borrar vinilos
+- Formularios con validaciones
+- LocalStorage para la sesión
+
+**Todo conectado:**
+- Frontend llama al backend con HttpClient
+- Manejo de errores con mensajes
+- Spinners mientras carga
+- Diseño responsive con Bootstrap
 
 ## 🤝 Contribuciones
 
@@ -251,22 +273,13 @@ Las contribuciones son bienvenidas. Para cambios importantes:
 4. Push a la rama (`git push origin feature/NuevaCaracteristica`)
 5. Abre un Pull Request
 
-## 📝 Notas de Desarrollo
+## 📝 Notas
 
-### Consideraciones Técnicas
-- **No hay backend**: Los formularios se manejan con localStorage
-- **Imágenes externas**: Actualmente usa URLs de CDN
-- **Sin framework JS**: JavaScript vanilla para mejor rendimiento
-- **Bootstrap CDN**: No requiere instalación local
-
-### Buenas Prácticas Implementadas
-- ✅ Código modular y organizado
-- ✅ Comentarios descriptivos
-- ✅ Nombres de variables en español para consistencia
-- ✅ Manejo de errores
-- ✅ Validación de entrada de usuario
-- ✅ Accesibilidad básica
-- ✅ Responsive design
+- MongoDB guarda los datos permanentemente (no se pierden al reiniciar)
+- JWT con expiración de 7 días
+- Las contraseñas se hashean con bcrypt
+- Seed automático pone 5 vinilos de ejemplo al iniciar
+- Funciona con MongoDB local o Atlas (nube)
 
 ## 📧 Contacto
 
@@ -285,6 +298,8 @@ Este proyecto es de código abierto y está disponible bajo la Licencia MIT.
 
 ---
 
-**Desarrollado con ❤️ para los amantes del vinilo**
+---
 
-🎵 *"La música suena mejor en vinilo"* 🎵
+**Proyecto de curso - Full Stack con Angular + Node.js + MongoDB**
+
+Todo funciona y está documentado. Si algo no corre, revisa que MongoDB esté prendido y que hayas hecho `npm install` en ambas carpetas.
