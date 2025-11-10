@@ -1,0 +1,17 @@
+.card {
+  border: none;
+}
+
+.btn-warning {
+  background-color: #c9a227;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-warning:hover {
+  background-color: #b58c1a;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+}

@@ -1,0 +1,61 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <h2 class="text-center text-warning mb-4">Iniciar Sesión</h2>
+          
+          <!-- Error Message -->
+          <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+            ❌ {{ errorMessage }}
+          </div>
+
+          <div class="alert alert-info mb-3">
+            <small><strong>Demo:</strong> test@test.com / 123456</small>
+          </div>
+          
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                formControlName="email"
+                [class.is-invalid]="submitted && f['email'].errors">
+              <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">El correo es obligatorio</div>
+                <div *ngIf="f['email'].errors['email']">Ingresa un correo válido</div>
+              </div>
+            </div>
+            
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                formControlName="password"
+                [class.is-invalid]="submitted && f['password'].errors">
+              <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">La contraseña es obligatoria</div>
+                <div *ngIf="f['password'].errors['minlength']">La contraseña debe tener al menos 6 caracteres</div>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-warning w-100" [disabled]="loading">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+              {{ loading ? 'Iniciando sesión...' : 'Entrar' }}
+            </button>
+          </form>
+          
+          <p class="text-center mt-3">
+            ¿No tienes cuenta? <a routerLink="/registro" class="text-warning">Regístrate</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

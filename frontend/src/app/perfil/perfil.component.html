@@ -1,0 +1,76 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card shadow">
+        <div class="card-body text-center">
+          <div class="profile-icon mb-3">
+            <i class="bi bi-person-circle" style="font-size: 5rem; color: #c9a227;"></i>
+          </div>
+          <h3 class="text-warning">{{ usuario.nombre }}</h3>
+          <p class="text-muted">{{ usuario.email }}</p>
+          <p><small>Miembro desde {{ usuario.miembro_desde }}</small></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 mb-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <h4 class="text-warning mb-4">Enviar Mensaje al Backend</h4>
+          
+          <!-- Success Message -->
+          <div *ngIf="successMessage" class="alert alert-success" role="alert">
+            ✅ {{ successMessage }}
+          </div>
+
+          <!-- Error Message -->
+          <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+            ❌ {{ errorMessage }}
+          </div>
+
+          <form [formGroup]="contactForm" (ngSubmit)="enviarMensaje()">
+            <!-- Nombre -->
+            <div class="mb-3">
+              <label class="form-label">Nombre</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                formControlName="nombre" 
+                readonly>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                formControlName="email" 
+                readonly>
+            </div>
+
+            <!-- Mensaje -->
+            <div class="mb-3">
+              <label class="form-label">Mensaje</label>
+              <textarea 
+                class="form-control" 
+                rows="4" 
+                formControlName="mensaje"
+                [class.is-invalid]="submitted && f['mensaje'].errors"
+                placeholder="Escribe tu mensaje aquí..."></textarea>
+              <div *ngIf="submitted && f['mensaje'].errors" class="invalid-feedback">
+                <div *ngIf="f['mensaje'].errors['required']">El mensaje es obligatorio</div>
+                <div *ngIf="f['mensaje'].errors['minlength']">El mensaje debe tener al menos 10 caracteres</div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-warning" [disabled]="loading">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+              {{ loading ? 'Enviando...' : 'Enviar Mensaje' }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

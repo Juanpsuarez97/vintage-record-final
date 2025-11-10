@@ -1,0 +1,9 @@
+.navbar-brand {
+  font-family: 'Playfair Display', serif;
+  color: #c9a227 !important;
+  font-weight: bold;
+}
+
+.nav-link.active {
+  color: #c9a227 !important;
+}
